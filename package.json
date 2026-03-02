@@ -1,0 +1,104 @@
+{
+  "name": "funny-sounds",
+  "displayName": "Funny Sounds - Terminal Error Sounds",
+  "description": "Plays custom funny sounds when errors occur in the VS Code terminal",
+  "version": "1.0.0",
+  "publisher": "funny-sounds",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "funnySounds.enable",
+        "title": "Funny Sounds: Enable Error Sounds"
+      },
+      {
+        "command": "funnySounds.disable",
+        "title": "Funny Sounds: Disable Error Sounds"
+      },
+      {
+        "command": "funnySounds.testSound",
+        "title": "Funny Sounds: Test Error Sound"
+      },
+      {
+        "command": "funnySounds.selectSound",
+        "title": "Funny Sounds: Select Custom Sound File"
+      }
+    ],
+    "configuration": {
+      "title": "Funny Sounds",
+      "properties": {
+        "funnySounds.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable error sounds"
+        },
+        "funnySounds.soundFilePath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to a custom sound file (.wav/.mp3). Leave empty to use the default sound."
+        },
+        "funnySounds.volume": {
+          "type": "number",
+          "default": 50,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Volume level (0-100)"
+        },
+        "funnySounds.errorPatterns": {
+          "type": "array",
+          "default": [
+            "error",
+            "Error",
+            "ERROR",
+            "fatal",
+            "FATAL",
+            "exception",
+            "Exception",
+            "EXCEPTION",
+            "failed",
+            "FAILED",
+            "Cannot find",
+            "command not found",
+            "No such file",
+            "Permission denied",
+            "segmentation fault",
+            "undefined is not",
+            "is not defined",
+            "SyntaxError",
+            "TypeError",
+            "ReferenceError",
+            "RangeError"
+          ],
+          "description": "List of patterns that trigger the error sound"
+        },
+        "funnySounds.cooldownMs": {
+          "type": "number",
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 10000,
+          "description": "Cooldown in milliseconds between sounds to prevent spam"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.3.0"
+  }
+}
