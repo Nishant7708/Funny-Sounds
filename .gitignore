@@ -1,0 +1,35 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# VS Code extension build output
+out/
+*.vsix
+
+# TypeScript
+*.tsbuildinfo
+
+# Source maps & compiled JS (agar src se build hota hai)
+*.map
+*.js
+!src/**/*.js
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code local settings
+.vscode/
+!.vscode/extensions.json
+
+# Logs
+logs/
+*.log
+
+# Coverage
+coverage/
